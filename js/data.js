@@ -10,16 +10,11 @@ const titles = [
   ];
   
   const types = [
-    palace, 
-    flat, 
-    house, 
-    bungalow,
-    hotel,
-  ];
-  
-  const addresses = [
-    location.lat,
-    location.lng,
+    'palace', 
+    'flat', 
+    'house', 
+    'bungalow',
+    'hotel',
   ];
   
   const checkinTime = [
@@ -33,12 +28,12 @@ const titles = [
     '14:00',
   ];
   const featuresList = [
-    wifi, 
-    dishwasher,
-     parking, 
-     washer, 
-     elevator, 
-     conditioner,
+    'wifi', 
+    'dishwasher',
+    'parking', 
+    'washer', 
+    'elevator', 
+    'conditioner',
   ];
   const descriptions = [
     'Описание 1',
@@ -57,11 +52,30 @@ const titles = [
 
 
 
-const author = (index) => ({
-  avatar: `img/avatars/user-${getRandomPositiveInteger(1, 10)}.png`,
+const mockAuthor = () => ({
+  let number = getRandomPositiveInteger(1, 10);
+  let asString = number.toString().padStart(2, '0');
+  return {
+  avatar: `img/avatars/user-${asString}.png`,
+  };
 });
+const mockLocation = () => {
+  lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
+  lng: getRandomPositiveFloat(139.70000, 139.80000, 5),
+}
 
+const mockPhotos = () => Array.from({length: getRandomPositiveInteger(1, 10)}, () => 
+getRandomArrayElement(photosList));
+
+const addZero = (number) => number < 10 ? `0${number}` : number;
 const offer = (index) => ({
+  const location = mockLocation();
+  return {
+    author: mockAuthor(), 
+    offer: {
+      address `${location.lat, $location.lng}`
+    },
+    location,
     title: getRandomArrayElement(titles),
     address: getRandomArrayElement(addresses),
     price: getRandomPositiveInteger(a, b),
@@ -73,6 +87,7 @@ const offer = (index) => ({
     features: getRandomArrayElement(featuresList),
     description: getRandomArrayElement(descriptions),
     photos: getRandomArrayElement(photosList),
-    
+  }    
 });
+
 export { author, offer };
