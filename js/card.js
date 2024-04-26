@@ -45,3 +45,5 @@ for (const {offer, author} of photoMocks){
 
 const canvasElement = document.querySelector('#map-canvas');
 canvasElement.append(getRandomPositiveInteger(cardFragment.childNodes));
+
+export { markUpFeatures, constmarkUpPhotos };
