@@ -1,6 +1,6 @@
 import { getRandomPositiveInteger, getRandomArrayElement } from './util.js';
 
-const titles = [
+const TITLES_MOCK = [
     'Жилье 1',
     'Жилье 2',
     'Жилье 3',
@@ -9,7 +9,7 @@ const titles = [
     'Жилье 6',
   ];
   
-  const types = [
+  const TYPES = [
     'palace', 
     'flat', 
     'house', 
@@ -17,17 +17,17 @@ const titles = [
     'hotel',
   ];
   
-  const checkinTime = [
+  const CHECKIN_TIME = [
     '12:00', 
     '13:00',
     '14:00',
   ];
-  const checkoutTime = [
+  const CHECKOUTTIME = [
     '12:00', 
     '13:00',
     '14:00',
   ];
-  const featuresList = [
+  const FEATURES_LIST = [
     'wifi', 
     'dishwasher',
     'parking', 
@@ -35,7 +35,7 @@ const titles = [
     'elevator', 
     'conditioner',
   ];
-  const descriptions = [
+  const DESCRIPTIONS = [
     'Описание 1',
     'Описание 2',
     'Описание 3',
@@ -43,7 +43,7 @@ const titles = [
     'Описание 5',
     'Описание 6',
   ];
-  const photosList = [
+  const PHOTOSLIST = [
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg',
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
@@ -59,35 +59,36 @@ const mockAuthor = () => ({
   avatar: `img/avatars/user-${asString}.png`,
   };
 });
-const mockLocation = () => {
+
+const mockLocation = () => ({
   lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
   lng: getRandomPositiveFloat(139.70000, 139.80000, 5),
-}
+});
 
 const mockPhotos = () => Array.from({length: getRandomPositiveInteger(1, 10)}, () => 
 getRandomArrayElement(photosList));
 
 const addZero = (number) => number < 10 ? `0${number}` : number;
-const offer = (index) => ({
+const getOffer = () => ({
   const location = mockLocation();
   return {
     author: mockAuthor(), 
     offer: {
-      address `${location.lat, $location.lng}`
+      address: `${location.lat, $location.lng}`
     },
     location,
-    title: getRandomArrayElement(titles),
+    title: getRandomArrayElement(TITLES_MOCK),
     address: getRandomArrayElement(addresses),
-    price: getRandomPositiveInteger(a, b),
-    type: getRandomArrayElement(types),
-    rooms: getRandomPositiveInteger(a, b),
-    guests: getRandomPositiveInteger(a, b),
-    checkin: getRandomArrayElement(checkinTime),
-    checkin: getRandomArrayElement(checkoutTime),
-    features: getRandomArrayElement(featuresList),
-    description: getRandomArrayElement(descriptions),
-    photos: getRandomArrayElement(photosList),
+    price: getRandomPositiveInteger(0, 100000),
+    type: getRandomArrayElement(TYPES),
+    rooms: getRandomPositiveInteger(1, 100),
+    guests: getRandomPositiveInteger(1, 20),
+    checkin: getRandomArrayElement(CHECKIN_TIME),
+    checkin: getRandomArrayElement(CHECKOUTTIME),
+    features: getRandomArrayElement(FEATURES_LIST),
+    description: getRandomArrayElement(DESCRIPTIONS),
+    photos: getRandomArrayElement(PHOTOSLIST),
   }    
 });
 
-export { author, offer };
+export { author, getOffer };

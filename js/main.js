@@ -1,7 +1,8 @@
 import { author, offer } from './data.js';
-import { markUpFeatures, constmarkUpPhotos } from './card.js';
+import { getTemplate } from './card.js';
 
 author();
-offer();
-markUpFeatures();
-constmarkUpPhotos();
+
+const map = document.querySelector('.map');
+const card = getTemplate(offer());
+map.appendChild(card);
