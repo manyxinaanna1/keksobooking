@@ -14,7 +14,7 @@ const getTemplate = (offer) => {
   const offerPrice = card.querySelector('.popup__text--price');
   const offerType = card.querySelector('.popup__type');
   const flat = card.querySelector('.popup__text--capacity');
-  const checkTime = card.querySelector('..popup__text--time');
+  const checkTime = card.querySelector('.popup__text--time');
   const popupDescription = card.querySelector('.popup__description');
 
   cardAvatar.src = offer.author.avatar;
