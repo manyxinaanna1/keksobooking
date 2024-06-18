@@ -52,13 +52,13 @@ const TITLES_MOCK = [
 
 
 
-const mockAuthor = () => ({
-  let number = getRandomPositiveInteger(1, 10);
-  let asString = number.toString().padStart(2, '0');
+const mockAuthor = () => {
+  const number = getRandomPositiveInteger(1, 10);
+  const asString = number.toString().padStart(2, '0');
   return {
   avatar: `img/avatars/user-${asString}.png`,
   };
-});
+};
 
 const mockLocation = () => ({
   lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
@@ -68,8 +68,8 @@ const mockLocation = () => ({
 const mockPhotos = () => Array.from({length: getRandomPositiveInteger(1, 10)}, () => 
 getRandomArrayElement(photosList));
 
-const addZero = (number) => number < 10 ? `0${number}` : number;
-const getOffer = () => ({
+//const addZero = (number) => number < 10 ? `0${number}` : number;
+const getOffer = () => {
   const location = mockLocation();
   return {
     author: mockAuthor(), 
@@ -89,6 +89,6 @@ const getOffer = () => ({
     description: getRandomArrayElement(DESCRIPTIONS),
     photos: getRandomArrayElement(PHOTOSLIST),
   }    
-});
+};
 
-export { author, getOffer };
+export { getOffer };

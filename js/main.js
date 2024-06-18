@@ -1,4 +1,4 @@
-import { author, offer } from './data.js';
+import { getOffer } from './data.js';
 import { getTemplate } from './card.js';
 
 author();

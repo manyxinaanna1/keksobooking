@@ -21,7 +21,12 @@ const getTemplate = (offer) => {
   cardTitle.textContent = offer.title;
   cardAdress.texcontent = offer.address;
   offerPrice.texcontent = `${offer.price} ₽/ночь`;
-  offerType.textContent = offer.type;
+  
+
+  if(offer.features.length) {
+    popupFeatures.textContent = offer.features.map((offerItem) => OFER_FEATURES[offerItem]).join('. ') ;
+  }
+
   flat.textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   checkTime.textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   popupDescription.textContent = offer.description;
