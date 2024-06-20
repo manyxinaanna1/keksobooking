@@ -59,6 +59,7 @@ const mockAuthor = () => {
   avatar: `img/avatars/user-${asString}.png`,
   };
 };
+//const addZero = (number) => number < 10 ? `0${number}` : number;
 
 const mockLocation = () => ({
   lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
@@ -68,7 +69,7 @@ const mockLocation = () => ({
 const mockPhotos = () => Array.from({length: getRandomPositiveInteger(1, 10)}, () => 
 getRandomArrayElement(photosList));
 
-//const addZero = (number) => number < 10 ? `0${number}` : number;
+
 const getOffer = () => {
   const location = mockLocation();
   return {

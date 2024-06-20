@@ -1,14 +1,28 @@
-/*const houseTypeToString = {
+const houseTypeToString = {
     'flat': 'Квартира',
     'bungalow': 'Бунгало',
     'house': 'Дом',
     'palace': 'Дворец',
     'hotel': 'Отель',
-};*/
+};
 
-const getTemplate = (offer) => {
-  const card = document.querySelector('#card').content;
-  const cardAvatar = card.querySelector('.popup__avatar');
+const templateFragment = document.querySelector('#card').content;
+const template = templateFragment.querySelector('.popup');
+
+const createGallery = (container, photos) => {
+  const photoNode = container.querySelector('.popup_photo');
+  photos.forEach(photo) => {
+    const clonePhoto = photoNode.cloneNode(true);
+    clonePhoto.photo.src = photo;
+    container.append(clonePhoto);
+  }
+  photoNode.remove();
+};
+
+const createPopup = (offer, author) => {
+  
+  const cardElement = template.cloneNode(true);
+  const cardPopupElement = card.querySelector('.popup__avatar');
   const cardTitle = card.querySelector('.popup__title');
   const cardAdress = card.querySelector('.popup__text--address');
   const offerPrice = card.querySelector('.popup__text--price');
@@ -16,6 +30,8 @@ const getTemplate = (offer) => {
   const flat = card.querySelector('.popup__text--capacity');
   const checkTime = card.querySelector('.popup__text--time');
   const popupDescription = card.querySelector('.popup__description');
+  const popupFeatures = card.querySelector('.popup__features');
+  const galleryPopup = card.querySelector('.popup__photos')
 
   cardAvatar.src = offer.author.avatar;
   cardTitle.textContent = offer.title;
@@ -32,4 +48,4 @@ const getTemplate = (offer) => {
   popupDescription.textContent = offer.description;
 };
 
-export { getTemplate };
+export { createPopup };

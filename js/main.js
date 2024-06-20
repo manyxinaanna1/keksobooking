@@ -1,8 +1,8 @@
 import { getOffer } from './data.js';
-import { getTemplate } from './card.js';
+import { createPopup } from './card.js';
 
-author();
+const mapCanvas = document.querySelector('#map-canvas');
 
-const map = document.querySelector('.map');
-const card = getTemplate(offer());
+const offerData = getoffer();
+const card = createPopup(offer());
 map.appendChild(card);
