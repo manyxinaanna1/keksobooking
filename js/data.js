@@ -8,31 +8,31 @@ const TITLES_MOCK = [
     'Жилье 5',
     'Жилье 6',
   ];
-  
+
   const TYPES = [
-    'palace', 
-    'flat', 
-    'house', 
+    'palace',
+    'flat',
+    'house',
     'bungalow',
     'hotel',
   ];
-  
+
   const CHECKIN_TIME = [
-    '12:00', 
+    '12:00',
     '13:00',
     '14:00',
   ];
   const CHECKOUTTIME = [
-    '12:00', 
+    '12:00',
     '13:00',
     '14:00',
   ];
   const FEATURES_LIST = [
-    'wifi', 
+    'wifi',
     'dishwasher',
-    'parking', 
-    'washer', 
-    'elevator', 
+    'parking',
+    'washer',
+    'elevator',
     'conditioner',
   ];
   const DESCRIPTIONS = [
@@ -48,7 +48,7 @@ const TITLES_MOCK = [
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg',
     'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg',
   ];
-  
+
 
 
 
@@ -59,27 +59,24 @@ const mockAuthor = () => {
   avatar: `img/avatars/user-${asString}.png`,
   };
 };
-//const addZero = (number) => number < 10 ? `0${number}` : number;
+
 
 const mockLocation = () => ({
   lat: getRandomPositiveFloat(35.65000, 35.70000, 5),
   lng: getRandomPositiveFloat(139.70000, 139.80000, 5),
 });
 
-const mockPhotos = () => Array.from({length: getRandomPositiveInteger(1, 10)}, () => 
+const mockPhotos = () => Array.from({length: getRandomPositiveInteger(1, 10)}, () =>
 getRandomArrayElement(photosList));
 
 
-const getOffer = () => {
-  const location = mockLocation();
+const mockOffer = () => {
+
   return {
-    author: mockAuthor(), 
+    author: mockAuthor(),
     offer: {
-      address: `${location.lat, $location.lng}`
-    },
-    location,
+      address: `${location.lat}, ${location.lng}`,
     title: getRandomArrayElement(TITLES_MOCK),
-    address: getRandomArrayElement(addresses),
     price: getRandomPositiveInteger(0, 100000),
     type: getRandomArrayElement(TYPES),
     rooms: getRandomPositiveInteger(1, 100),
@@ -87,9 +84,13 @@ const getOffer = () => {
     checkin: getRandomArrayElement(CHECKIN_TIME),
     checkin: getRandomArrayElement(CHECKOUTTIME),
     features: getRandomArrayElement(FEATURES_LIST),
-    description: getRandomArrayElement(DESCRIPTIONS),
-    photos: getRandomArrayElement(PHOTOSLIST),
-  }    
+    description: Array.from({ length: getRandomPositiveInteger(1, 10)},
+      getRandomArrayElement(DESCRIPTIONS),
+    photos: Array.from({ length: getRandomPositiveInteger(1, 10)},getRandomArrayElement(PHOTOSLIST),
+    location,
+    },
+    location,
+  }
 };
 
 export { getOffer };

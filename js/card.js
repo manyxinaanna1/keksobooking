@@ -11,20 +11,19 @@ const template = templateFragment.querySelector('.popup');
 
 const createGallery = (container, photos) => {
   const photoNode = container.querySelector('.popup_photo');
-  photos.forEach(photo) => {
+  photos.forEach((photo) => {
     const clonePhoto = photoNode.cloneNode(true);
     clonePhoto.photo.src = photo;
     container.append(clonePhoto);
-  }
+  });
   photoNode.remove();
 };
 
 const createPopup = (offer, author) => {
-  
-  const cardElement = template.cloneNode(true);
+  const card = template.cloneNode(true);
   const cardPopupElement = card.querySelector('.popup__avatar');
   const cardTitle = card.querySelector('.popup__title');
-  const cardAdress = card.querySelector('.popup__text--address');
+  const cardAddress = card.querySelector('.popup__text--address');
   const offerPrice = card.querySelector('.popup__text--price');
   const offerType = card.querySelector('.popup__type');
   const flat = card.querySelector('.popup__text--capacity');
@@ -32,17 +31,13 @@ const createPopup = (offer, author) => {
   const popupDescription = card.querySelector('.popup__description');
   const popupFeatures = card.querySelector('.popup__features');
   const galleryPopup = card.querySelector('.popup__photos')
-
   cardAvatar.src = offer.author.avatar;
   cardTitle.textContent = offer.title;
-  cardAdress.texcontent = offer.address;
+  cardAddress.texcontent = offer.address;
   offerPrice.texcontent = `${offer.price} ₽/ночь`;
-  
-
-  if(offer.features.length) {
+    if(offer.features.length) {
     popupFeatures.textContent = offer.features.map((offerItem) => OFER_FEATURES[offerItem]).join('. ') ;
   }
-
   flat.textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   checkTime.textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   popupDescription.textContent = offer.description;
