@@ -1,4 +1,4 @@
-import { getRandomPositiveInteger, getRandomArrayElement } from './util.js';
+import { getRandomPositiveInteger, getRandomArrayElement, getRandomPositiveFloat } from './util.js';
 
 const TITLES_MOCK = [
     'Жилье 1',
@@ -85,8 +85,8 @@ const mockOffer = () => {
     checkin: getRandomArrayElement(CHECKOUTTIME),
     features: getRandomArrayElement(FEATURES_LIST),
     description: Array.from({ length: getRandomPositiveInteger(1, 10)},
-      getRandomArrayElement(DESCRIPTIONS),
-    photos: Array.from({ length: getRandomPositiveInteger(1, 10)},getRandomArrayElement(PHOTOSLIST),
+      getRandomArrayElement(DESCRIPTIONS)),
+    photos: Array.from({ length: getRandomPositiveInteger(1, 10)},getRandomArrayElement(PHOTOSLIST)),
     location,
     },
     location,
