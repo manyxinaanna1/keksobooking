@@ -35,9 +35,6 @@ const createPopup = (offer, author) => {
   cardTitle.textContent = offer.title;
   cardAddress.texcontent = offer.address;
   offerPrice.texcontent = `${offer.price} ₽/ночь`;
-    /* if(offer.features.length) {
-    popupFeatures.textContent = offer.features.map((offerItem) => OFFER_FEATURES[offerItem]).join('. ') ;
-  } */
   flat.textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   checkTime.textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   popupDescription.textContent = offer.description;
