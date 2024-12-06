@@ -19,7 +19,7 @@ const template = templateFragment.querySelector('.popup');
   photoNode.remove();
 }; */
 
-// card.querySelector('.popup__feature--$(feature)')
+
 
 const createPopup = (offer, author) => {
   const card = template.cloneNode(true);
@@ -31,26 +31,52 @@ const createPopup = (offer, author) => {
   const flat = card.querySelector('.popup__text--capacity');
   const checkTime = card.querySelector('.popup__text--time');
   const popupDescription = card.querySelector('.popup__description');
-  //const popupFeatures = card.querySelector('.popup__features');
+  //const popupFeatures = card.querySelector('.popup__feature--$(feature');
   // const galleryPopup = card.querySelector('.popup__photos');
   cardAvatar.src = author.avatar;
-  cardTitle.textContent = houseTypeToString[offer.title];
-  
-  offerPrice.texcontent = `${offer.price} ₽/ночь`;
-  flat.textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
+
+  if(offer.title) {
+    cardTitle.textContent = houseTypeToString[offer.title];
+  } else {
+    cardTitle.classList.add('hidden');
+  }
+
+  if(offer.address) {
+    cardAddress.texcontent = offer.address;
+  } else {
+    cardAddress.classList.add('hidden');
+  }
+
+  if(offer.price) {
+    offerPrice.texcontent = `${offer.price} ₽/ночь`;
+  } else {
+    offerPrice.classList.add('hidden');
+  }
+
+  if(offer.rooms && offer.guests) {
+    flat.textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
+  } else {
+    offer.rooms.classList.add('hidden');
+    offer.guests.classList.add('hidden');
+  }
+
+  if (offer.checkin && offer.checkout) {
   checkTime.textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
-  popupDescription.textContent = offer.description;
+  } else {
+    offer.checkin.classList.add('hidden');
+    offer.checkout.classList.add('hidden');
+    }
+
+  if (offer.description) {
+    popupDescription.textContent = offer.description;
+  } else {
+    popupDescription.classList.add('hidden');
+  }
 
   //offer.photos.forEach(photo => {})
 
   const img = document.createElement('img').src ='...';
   photoContainer.appendChild(img);
-
-  if(offer.address) {
-    cardAddress.texcontent = offer.address;
-  } else {
-    cardAddress.classList.add('hidden')
-  }
 };
 
 export { createPopup };
