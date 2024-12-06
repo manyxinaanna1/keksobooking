@@ -1,10 +1,10 @@
-/*const houseTypeToString = {
+const houseTypeToString = {
     'flat': 'Квартира',
     'bungalow': 'Бунгало',
     'house': 'Дом',
     'palace': 'Дворец',
     'hotel': 'Отель',
-}; - он не используется, как его использовать?*/
+};
 
 const templateFragment = document.querySelector('#card').content;
 const template = templateFragment.querySelector('.popup');
@@ -19,6 +19,8 @@ const template = templateFragment.querySelector('.popup');
   photoNode.remove();
 }; */
 
+// card.querySelector('.popup__feature--$(feature)')
+
 const createPopup = (offer, author) => {
   const card = template.cloneNode(true);
   // const cardPopupElement = card.querySelector('.popup__avatar');
@@ -31,13 +33,24 @@ const createPopup = (offer, author) => {
   const popupDescription = card.querySelector('.popup__description');
   //const popupFeatures = card.querySelector('.popup__features');
   // const galleryPopup = card.querySelector('.popup__photos');
-  //cardAvatar.src = offer.author.avatar;
-  cardTitle.textContent = offer.title;
-  cardAddress.texcontent = offer.address;
+  cardAvatar.src = author.avatar;
+  cardTitle.textContent = houseTypeToString[offer.title];
+  
   offerPrice.texcontent = `${offer.price} ₽/ночь`;
   flat.textContent = `${offer.rooms} комнаты для ${offer.guests} гостей`;
   checkTime.textContent = `Заезд после ${offer.checkin}, выезд до ${offer.checkout}`;
   popupDescription.textContent = offer.description;
+
+  //offer.photos.forEach(photo => {})
+
+  const img = document.createElement('img').src ='...';
+  photoContainer.appendChild(img);
+
+  if(offer.address) {
+    cardAddress.texcontent = offer.address;
+  } else {
+    cardAddress.classList.add('hidden')
+  }
 };
 
 export { createPopup };
